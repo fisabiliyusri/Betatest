@@ -130,9 +130,11 @@ chmod +x /etc/openvpn/ca.crt
 
 # server settings
 cd /etc/openvpn/
-wget -O /etc/openvpn/server-tcp.conf "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/server-tcp.conf"
-wget -O /etc/openvpn/server-udp.conf "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/server-udp.conf"
+wget -O /etc/openvpn/server.tcp.conf "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/server-tcp.conf"
+wget -O /etc/openvpn/server.udp.conf "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/server-udp.conf"
 systemctl start openvpn@server
+systemctl start openvpn@server.tcp
+systemctl start openvpn@server.tcp
 sysctl -w net.ipv4.ip_forward=1
 sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
 iptables -t nat -I POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
