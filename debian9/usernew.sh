@@ -5,7 +5,7 @@ read -p "Username : " Login
 read -p "Password : " Pass
 read -p "Expired (hari): " masaaktif
 
-IP=`curl icanhazip.com`
+IP=`dig +short myip.opendns.com @resolver1.opendns.com`
 useradd -e `date -d "$masaaktif days" +"%Y-%m-%d"` -s /bin/false -M $Login
 exp="$(chage -l $Login | grep "Account expires" | awk -F": " '{print $2}')"
 echo -e "$Pass\n$Pass\n"|passwd $Login &> /dev/null
@@ -32,7 +32,5 @@ echo -e "Mod by Sulaiman L" | lolcat
 echo -e "=============================" | lolcat
 echo -e "Config OpenVPN (TCP 56969): http://$IP:81/client-tcp.ovpn" | lolcat
 echo -e "Config OpenVPN (UDP 1945): http://$IP:81/client-udp.ovpn" | lolcat
-echo -e "Config OpenVPN (SSL 569): http://$IP:81/ovpnssl-569.ovpn" | lolcat
-echo -e "Config SSL: http://$IP:81/ssl.conf" | lolcat
 echo -e "=============================" | lolcat
 echo -e ""
