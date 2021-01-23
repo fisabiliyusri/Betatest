@@ -393,6 +393,12 @@ chown -R www-data:www-data /home/vps/public_html
 rm -rf ~/.bash_history && history -c
 echo "unset HISTFILE" >> /etc/profile
 
+# 
+apt-get -y update --fix-missing
+apt-get -y --purge remove apache2*
+apt-get -y autoremove
+rm -rf /etc/apache2
+
 # info
 clear
 cd
