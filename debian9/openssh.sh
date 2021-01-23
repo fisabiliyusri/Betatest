@@ -150,12 +150,18 @@ systemctl daemon-reload
 /etc/init.d/openvpn restart
 
 # openvpn config
-wget -O /etc/openvpn/client.ovpn "https://raw.githubusercontent.com/acillsadank/install/master/client.conf"
-sed -i $MYIP2 /etc/openvpn/client.ovpn;
-echo '<ca>' >> /etc/openvpn/client.ovpn
-cat /etc/openvpn/ca.crt >> /etc/openvpn/client.ovpn
-echo '</ca>' >> /etc/openvpn/client.ovpn
-cp client.ovpn /home/vps/public_html/
+wget -O /etc/openvpn/client-udp.ovpn "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/client-udp.conf"
+sed -i $MYIP2 /etc/openvpn/client-udp.ovpn;
+echo '<ca>' >> /etc/openvpn/client-udp.ovpn
+cat /etc/openvpn/ca.crt >> /etc/openvpn/client-udp.ovpn
+echo '</ca>' >> /etc/openvpn/client-udp.ovpn
+cp client-udp.ovpn /home/vps/public_html/
+wget -O /etc/openvpn/client-tcp.ovpn "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/client-tcp.conf"
+sed -i $MYIP2 /etc/openvpn/client-tcp.ovpn;
+echo '<ca>' >> /etc/openvpn/client-tcp.ovpn
+cat /etc/openvpn/ca.crt >> /etc/openvpn/client-tcp.ovpn
+echo '</ca>' >> /etc/openvpn/client-tcp.ovpn
+cp client-tcp.ovpn /home/vps/public_html/
 wget -O /etc/openvpn/openvpnssl.ovpn "https://raw.githubusercontent.com/acillsadank/install/master/openvpnssl.conf"
 echo '<ca>' >> /etc/openvpn/openvpnssl.ovpn
 cat /etc/openvpn/ca.crt >> /etc/openvpn/openvpnssl.ovpn
