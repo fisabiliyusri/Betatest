@@ -162,11 +162,11 @@ echo '<ca>' >> /etc/openvpn/client-tcp.ovpn
 cat /etc/openvpn/ca.crt >> /etc/openvpn/client-tcp.ovpn
 echo '</ca>' >> /etc/openvpn/client-tcp.ovpn
 cp client-tcp.ovpn /home/vps/public_html/
-wget -O /etc/openvpn/openvpnssl.ovpn "https://raw.githubusercontent.com/acillsadank/install/master/openvpnssl.conf"
-echo '<ca>' >> /etc/openvpn/openvpnssl.ovpn
-cat /etc/openvpn/ca.crt >> /etc/openvpn/openvpnssl.ovpn
+wget -O /etc/openvpn/ovpnssl-569.ovpn "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/ovpnssl-569.conf"
+echo '<ca>' >> /etc/openvpn/ovpnssl-569.ovpn
+cat /etc/openvpn/ca.crt >> /etc/openvpn/ovpnssl-569.ovpn
 echo '</ca>' >> /etc/openvpn/openvpnssl.ovpn
-cp openvpnssl.ovpn /home/vps/public_html/
+cp ovpnssl-569.ovpn /home/vps/public_html/
 
 
 echo "===  install neofetch  ==="
@@ -264,6 +264,9 @@ connect = 127.0.0.1:550
 [ssldropbear]
 accept = 9900
 connect = 127.0.0.1:9000
+[openvpn]
+accept = 569
+connect = 127.0.0.1:56969
 
 END
 
