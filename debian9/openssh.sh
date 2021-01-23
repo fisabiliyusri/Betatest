@@ -70,6 +70,16 @@ chmod +x /etc/rc.local
 systemctl enable rc-local
 systemctl start rc-local.service
 
+# update
+apt-get update
+
+# install webserver
+apt-get -y install nginx
+
+# install essential package
+apt-get -y install nano iptables-persistent dnsutils screen whois ngrep unzip unrar
+
+
 # install webserver
 cd
 rm /etc/nginx/sites-enabled/default
