@@ -132,7 +132,6 @@ chmod +x /etc/openvpn/ca.crt
 cd /etc/openvpn/
 wget -O /etc/openvpn/server.tcp.conf "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/server-tcp.conf"
 wget -O /etc/openvpn/server.udp.conf "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/server-udp.conf"
-systemctl start openvpn@server
 systemctl start openvpn@server.tcp
 systemctl start openvpn@server.tcp
 sysctl -w net.ipv4.ip_forward=1
