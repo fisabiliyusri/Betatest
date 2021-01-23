@@ -82,6 +82,7 @@ apt-get -y update
 
 # setting port ssh
 cd
+sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 1078' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 8000' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 400' /etc/ssh/sshd_config
