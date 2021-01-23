@@ -71,7 +71,7 @@ systemctl enable rc-local
 systemctl start rc-local.service
 
 # update
-apt-get update
+apt-get update -y
 
 # install webserver
 apt-get -y install nginx
