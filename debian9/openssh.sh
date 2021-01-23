@@ -17,14 +17,31 @@ commonname=telkomsel.com
 email=sulaiman.xl@facebook.com
 
 # go to root
-cd
+
+# configure rc.local
+cat <<EOF >/etc/rc.local
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+exit 0
+EOF
+chmod +x /etc/rc.local
+systemctl daemon-reload
+systemctl start rc-local
 
 # disable ipv6
 echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
 sed -i '$ i\echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6' /etc/rc.local
-
-# set time GMT +7 jakarta
-ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 
 # add dns server ipv4
 echo "nameserver 1.1.1.1" > /etc/resolv.conf
