@@ -26,6 +26,15 @@ sed -i '$ i\echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6' /etc/rc.local
 # set time GMT +7 jakarta
 ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 
+# add dns server ipv4
+echo "nameserver 1.1.1.1" > /etc/resolv.conf
+echo "nameserver 1.0.0.1" >> /etc/resolv.conf
+sed -i '$ i\echo "nameserver 1.1.1.1" > /etc/resolv.conf' /etc/rc.local
+sed -i '$ i\echo "nameserver 1.0.0.1" >> /etc/resolv.conf' /etc/rc.local
+
+# install wget and curl
+apt-get -y install wget curl
+
 # set locale
 sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
 /etc/init.d/ssh restart
