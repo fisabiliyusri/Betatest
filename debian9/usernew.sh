@@ -28,11 +28,11 @@ echo -e "Password : $Pass" | lolcat
 echo -e "-----------------------------" | lolcat
 echo -e "Aktif Sampai      : $exp" | lolcat
 echo -e "=============================" | lolcat
+echo -e "Mod by Sulaiman L" | lolcat
+echo -e "=============================" | lolcat
 echo -e "Config OpenVPN (TCP 56969): http://$IP:81/client-tcp.ovpn" | lolcat
 echo -e "Config OpenVPN (UDP 1945): http://$IP:81/client-udp.ovpn" | lolcat
 echo -e "Config OpenVPN (SSL 569): http://$IP:81/ovpnssl-569.ovpn" | lolcat
 echo -e "Config SSL: http://$IP:81/ssl.conf" | lolcat
 echo -e "=============================" | lolcat
-
-echo -e "Mod by Sulaiman L" | lolcat
 echo -e ""
