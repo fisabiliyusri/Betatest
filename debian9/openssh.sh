@@ -280,6 +280,11 @@ cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
 
 # konfigurasi stunnel
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
+cd /etc/stunnel/
+wget -O /etc/stunnel/ssl.conf "https://raw.githubusercontent.com/acillsadank/install/master/ssl.conf"
+sed -i $MYIP2 /etc/stunnel/ssl.conf;
+cp ssl.conf /home/vps/public_html/
+cd
 /etc/init.d/stunnel4 restart
 
 # common password debian 
