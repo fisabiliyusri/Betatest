@@ -281,7 +281,7 @@ cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
 # konfigurasi stunnel
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 cd /etc/stunnel/
-wget -O /etc/stunnel/ssl.conf "https://raw.githubusercontent.com/acillsadank/install/master/ssl.conf"
+wget -O /etc/stunnel/ssl.conf "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/ssl.conf"
 sed -i $MYIP2 /etc/stunnel/ssl.conf;
 cp ssl.conf /home/vps/public_html/
 cd
@@ -433,6 +433,7 @@ echo "========================================================="
 /etc/init.d/ssh restart
 /etc/init.d/dropbear restart
 /etc/init.d/stunnel4 restart
+/etc/init.d/sslh restart
 # /etc/init.d/squid restart
 /etc/init.d/nginx restart
 /etc/init.d/php5.6-fpm restart
