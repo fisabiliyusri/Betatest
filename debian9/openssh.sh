@@ -4,7 +4,7 @@
 # initialisasi var
 export DEBIAN_FRONTEND=noninteractive
 OS=`uname -m`;
-MYIP=`ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0'`;
+MYIP=$(wget -qO- ipv4.icanhazip.com);
 MYIP2="s/xxxxxxxxx/$MYIP/g";
 
 # detail nama perusahaan
@@ -137,9 +137,7 @@ systemctl start openvpn@server.tcp
 systemctl start openvpn@server.tcp
 sysctl -w net.ipv4.ip_forward=1
 sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
-iptables -t nat -I POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
 iptables -t nat -I POSTROUTING -s 10.7.0.0/24 -o eth0 -j MASQUERADE
-iptables -t nat -I POSTROUTING -s 10.6.0.0/24 -o eth0 -j MASQUERADE
 iptables -t nat -I POSTROUTING -s 10.5.0.0/24 -o eth0 -j MASQUERADE
 iptables -t nat -I POSTROUTING -s 192.168.0.0/24 -o eth0 -j MASQUERADE
 iptables -t nat -I POSTROUTING -s 192.168.100.0/24 -o eth0 -j MASQUERADE
@@ -164,12 +162,6 @@ echo '<ca>' >> /etc/openvpn/client-tcp.ovpn
 cat /etc/openvpn/ca.crt >> /etc/openvpn/client-tcp.ovpn
 echo '</ca>' >> /etc/openvpn/client-tcp.ovpn
 cp client-tcp.ovpn /home/vps/public_html/
-wget -O /etc/openvpn/ovpnssl-569.ovpn "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/ovpnssl-569.conf"
-echo '<ca>' >> /etc/openvpn/ovpnssl-569.ovpn
-cat /etc/openvpn/ca.crt >> /etc/openvpn/ovpnssl-569.ovpn
-echo '</ca>' >> /etc/openvpn/openvpnssl.ovpn
-cp ovpnssl-569.ovpn /home/vps/public_html/
-
 
 echo "===  install neofetch  ==="
 # install neofetch
@@ -282,10 +274,6 @@ cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
 
 # konfigurasi stunnel
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
-cd /etc/stunnel/
-wget -O /etc/stunnel/ssl.conf "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/ssl.conf"
-sed -i $MYIP2 /etc/stunnel/ssl.conf;
-cp ssl.conf /home/vps/public_html/
 cd
 /etc/init.d/stunnel4 restart
 
