@@ -375,6 +375,10 @@ echo; echo 'Installation has completed.'
 echo 'Config file is at /usr/local/ddos/ddos.conf'
 echo 'Please send in your comments and/or suggestions to zaf@vsnl.com'
 
+# xml parser
+cd
+apt-get install -y libxml-parser-perl
+
 # download script
 cd /usr/bin
 wget -O menu "https://raw.githubusercontent.com/fisabiliyusri/sshsl/master/debian9/menu.sh"
