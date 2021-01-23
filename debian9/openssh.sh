@@ -9,8 +9,8 @@ MYIP2="s/xxxxxxxxx/$MYIP/g";
 
 # detail nama perusahaan
 country=ID
-state=Semarang
-locality=JawaTengah
+state=SuluruhIndonesia
+locality=JawaSumatera
 organization=sulaimanssh
 organizationalunit=SLSSH
 commonname=telkomsel.com
@@ -61,8 +61,7 @@ chmod +x /etc/rc.local
 systemctl enable rc-local
 systemctl start rc-local.service
 
-echo "=================  install neofetch  ===================="
-echo "========================================================="
+echo "===  install neofetch  ==="
 # install neofetch
 apt-get update -y
 apt-get -y install gcc
@@ -81,10 +80,6 @@ echo "neofetch" >> .profile
 # instal php5.6 ubuntu 16.04 64bit
 apt-get -y update
 
-# set repo webmin
-#sh -c 'echo "deb http://download.webmin.com/download/repository sarge contrib" > /etc/apt/sources.list.d/webmin.list'
-#wget -qO - http://www.webmin.com/jcameron-key.asc | apt-key add -
-
 # setting port ssh
 cd
 sed -i '/Port 22/a Port 1078' /etc/ssh/sshd_config
@@ -95,8 +90,7 @@ sed -i '/Port 22/a Port 143' /etc/ssh/sshd_config
 sed -i 's/#Port 22/Port 22/g' /etc/ssh/sshd_config
 /etc/init.d/ssh restart
 
-echo "================  install Dropbear ======================"
-echo "========================================================="
+echo "===  install Dropbear ==="
 
 # install dropbear
 apt-get -y install dropbear
@@ -108,8 +102,6 @@ echo "/usr/sbin/nologin" >> /etc/shells
 /etc/init.d/ssh restart
 /etc/init.d/dropbear restart
 
-echo "=================  install Squid3  ======================"
-echo "========================================================="
 
 # setting dan install vnstat debian 9 64bit
 apt-get -y install vnstat
@@ -118,28 +110,7 @@ systemctl enable vnstat
 chkconfig vnstat on
 chown -R vnstat:vnstat /var/lib/vnstat
 
-# saya matikan install squid3
-# cd
-# apt-get -y install squid3
-# wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/idtunnel/sshtunnel/master/debian9/squid3.conf"
-# sed -i $MYIP2 /etc/squid/squid.conf;
-# /etc/init.d/squid restart
-
-echo "=================  saya matikan install Webmin  ======================"
-echo "========================================================="
-
-# install webmin
-cd
-#wget http://prdownloads.sourceforge.net/webadmin/webmin_1.910_all.deb
-#dpkg --install webmin_1.910_all.deb;
-#apt-get -y -f install;
-#sed -i 's/ssl=1/ssl=0/g' /etc/webmin/miniserv.conf
-#rm -f webmin_1.910_all.deb
-#/etc/init.d/webmin restart
-
-echo "=================  install stunnel  ====================="
-echo "========================================================="
-
+echo "===  install stunnel  ===="
 # install stunnel
 apt-get install stunnel4 -y
 cat > /etc/stunnel/stunnel.conf <<-END
@@ -211,46 +182,7 @@ apt-get -y install sslh
 wget -O /etc/default/sslh "https://raw.githubusercontent.com/idtunnel/sshtunnel/master/sslh-conf"
 service sslh restart
 
-echo "=================  Install badVPn (VC and Game) ======================"
-echo "========================================================="
-
-# buat directory badvpn
-
-echo "================= Disable badVPN V 1  ======================"
-#cd /usr/bin
-#mkdir build
-#cd /usr/bin/build
-#wget https://github.com/idtunnel/sshtunnel/raw/master/debian9/badvpn/badvpn-update.zip
-#unzip badvpn-update
-#cmake -DBUILD_NOTHING_BY_DEFAULT=1 -DBUILD_TUN2SOCKS=1 -DBUILD_UDPGW=1
-#make install
-#make -i install
-
-# aut start badvpn
-#sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 > /dev/null &' /etc/rc.local
-#screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 > /dev/null &
-cd
-#cd /usr/bin/build
-
-#sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 > /dev/null &' /etc/rc.local#
-#screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 > /dev/null &
-#auto badvpn
-
-# set permition rc.local badvpn
-#chmod +x /usr/local/bin/badvpn-udpgw
-#chmod +x /usr/local/share/man/man7/badvpn.7
-#chmod +x /usr/local/bin/badvpn-tun2socks
-#chmod +x /usr/local/share/man/man8/badvpn-tun2socks.8
-#chmod +x /etc/rc.local
-#chmod +x /usr/bin/build
-
-
-echo "================= Auto Installer Disable badVPN V 2  ======================"
-#wget https://raw.githubusercontent.com/idtunnel/UDPGW-SSH/master/badudp2.sh
-#chmod +x badudp2.sh
-#bash badudp2.sh
-
-echo "================= Auto Installer Disable badVPN V 3  ======================"
+echo "=== Auto Installer BadVPN UDPGW ==="
 # buat directory badvpn
 cd /usr/bin
 mkdir build
@@ -366,61 +298,12 @@ echo "unset HISTFILE" >> /etc/profile
 
 # info
 clear
-echo "Autoscript Include:" | tee log-install.txt
-echo "===========================================" | tee -a log-install.txt
-echo ""            | tee -a log-install.txt
-echo "Service"     | tee -a log-install.txt
-echo "-------"     | tee -a log-install.txt
-echo "OpenSSH      : 22,143"  | tee -a log-install.txt
-echo "Dropbear     : 109,456"  | tee -a log-install.txt
-echo "SSL          : 443"  | tee -a log-install.txt
-echo "SSL OpenSSH  : 43"  | tee -a log-install.txt
-echo "SSL Dropbear : 222,444,777"  | tee -a log-install.txt
-echo "SSL SSR      : 69"  | tee -a log-install.txt
-echo "badvpn       : badvpn-udpgw port 7300"  | tee -a log-install.txt
-echo "nginx        : 81"  | tee -a log-install.txt
-echo ""            | tee -a log-install.txt
-echo "Script"      | tee -a log-install.txt
-echo "------"  | tee -a log-install.txt
-echo "menu      : Menampilkan daftar perintah yang tersedia"  | tee -a log-install.txt
-echo "usernew   : Membuat Akun SSH"  | tee -a log-install.txt
-echo "trial     : Membuat Akun Trial"  | tee -a log-install.txt
-echo "hapus     : Menghapus Akun SSH"  | tee -a log-install.txt
-echo "cek       : Cek User Login"  | tee -a log-install.txt
-echo "member    : Cek Member SSH"  | tee -a log-install.txt
-echo "jurus69   : Restart Service dropbear, squid3, stunnel4, vpn, ssh)"  | tee -a log-install.txt
-echo "reboot    : Reboot VPS"  | tee -a log-install.txt
-echo "speedtest : Speedtest VPS"  | tee -a log-install.txt
-echo "info      : Menampilkan Informasi Sistem"  | tee -a log-install.txt
-echo "delete    : auto Delete user expired"  | tee -a log-install.txt
-echo "about     : Informasi tentang script auto install"  | tee -a log-install.txt
-echo ""  | tee -a log-install.txt
-
-echo "Fitur lain"  | tee -a log-install.txt
-echo "----------"  | tee -a log-install.txt
-echo "Timezone  : Asia/Jakarta (GMT +7)"  | tee -a log-install.txt
-echo "IPv6      : [off]"  | tee -a log-install.txt
-echo ""  | tee -a log-install.txt
-echo "Modified by hidessh"  | tee -a log-install.txt
-echo ""  | tee -a log-install.txt
-echo "Log Instalasi --> /root/log-install.txt"  | tee -a log-install.txt
-echo ""  | tee -a log-install.txt
-echo "VPS AUTO REBOOT TIAP JAM 12 MALAM"  | tee -a log-install.txt
-echo ""  | tee -a log-install.txt
-echo "==========================================="  | tee -a log-install.txt
 cd
 
 # auto Delete Acount SSH Expired
 wget -O /usr/local/bin/userdelexpired "https://www.dropbox.com/s/cwe64ztqk8w622u/userdelexpired?dl=1" && chmod +x /usr/local/bin/userdelexpired
 
-
 rm -f /root/openssh.sh
-
-echo "================  install OPENVPN  saya disable======================"
-echo "========================================================="
-# install openvpn debian 9 ( openvpn port 1194 dan 443 )
-#wget https://raw.githubusercontent.com/idtunnel/sshtunnel/master/debian9/openvpn.sh && chmod +x openvpn.sh && bash openvpn.sh
-#wget https://raw.githubusercontent.com/fisabiliyusri/sshsl/master/debian9/openvpn.sh && chmod +x openvpn.sh && bash openvpn.sh
 
 echo "==================== Restart Service ===================="
 echo "========================================================="
