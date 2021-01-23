@@ -11,7 +11,7 @@ exp="$(chage -l $Login | grep "Account expires" | awk -F": " '{print $2}')"
 echo -e "$Pass\n$Pass\n"|passwd $Login &> /dev/null
 echo -e ""
 echo -e "====Informasi SSH Account====" | lolcat
-echo -e "====  Premium Akun SSH   ====" | lolcat
+echo -e "=====  Premium Akun SSH =====" | lolcat
 echo -e "Host : $IP" | lolcat
 echo -e "Port SSH" | lolcat
 echo -e "OpenSSH : 143,200,400,1078,8000" | lolcat
@@ -27,6 +27,11 @@ echo -e "Username : $Login " | lolcat
 echo -e "Password : $Pass" | lolcat
 echo -e "-----------------------------" | lolcat
 echo -e "Aktif Sampai      : $exp" | lolcat
+echo -e "=============================" | lolcat
+echo -e "Config OpenVPN (TCP 56969): http://$IP:81/client-tcp.ovpn" | lolcat
+echo -e "Config OpenVPN (UDP 1945): http://$IP:81/client-udp.ovpn" | lolcat
+echo -e "Config OpenVPN (SSL 569): http://$IP:81/ovpnssl-569.ovpn" | lolcat
+echo -e "Config SSL: http://$IP:81/ssl.conf" | lolcat
 echo -e "=============================" | lolcat
 
 echo -e "Mod by Sulaiman L" | lolcat
