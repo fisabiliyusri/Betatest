@@ -130,7 +130,7 @@ chmod +x /etc/openvpn/ca.crt
 
 # server settings
 cd /etc/openvpn/
-wget -O /etc/openvpn/server.conf "https://raw.githubusercontent.com/acillsadank/install/master/server.conf"
+wget -O /etc/openvpn/server.conf "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/server.conf"
 systemctl start openvpn@server
 sysctl -w net.ipv4.ip_forward=1
 sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
