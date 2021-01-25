@@ -1,3 +1,5 @@
+# !/bin/bash
+# Script Auto Install Shadowsocks
 clear
 echo "================================================="
 echo "=========== Auto Insstaller Tunneling ==========="
