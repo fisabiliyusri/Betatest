@@ -14,6 +14,7 @@ locality=JawaSumatera
 organization=sulaimanssh
 organizationalunit=SLSSH
 commonname=telkomsel.com
+commonname=www.hbogo.eu
 email=sulaiman.xl@facebook.com
 
 # go to root
@@ -116,8 +117,8 @@ sed -i 's|export KEY_CITY="SanFrancisco"|export KEY_CITY="JAKARTA"|' /etc/openvp
 sed -i 's|export KEY_ORG="Fort-Funston"|export KEY_ORG="SLSSH"|' /etc/openvpn/easy-rsa/vars
 sed -i 's|export KEY_EMAIL="me@myhost.mydomain"|export KEY_EMAIL="sulaiman.xl@facebook.com"|' /etc/openvpn/easy-rsa/vars
 sed -i 's|export KEY_OU="MyOrganizationalUnit"|export KEY_OU="SLSSH"|' /etc/openvpn/easy-rsa/vars
-sed -i 's|export KEY_NAME="EasyRSA"|export KEY_NAME="SLSSH"|' /etc/openvpn/easy-rsa/vars
-sed -i 's|export KEY_OU=changeme|export KEY_OU="SLSSH" |' /etc/openvpn/easy-rsa/vars
+sed -i 's|export KEY_NAME="EasyRSA"|export KEY_NAME="www.hbogo.eu"|' /etc/openvpn/easy-rsa/vars
+sed -i 's|export KEY_OU=changeme|export KEY_OU="www.hbogo.eu" |' /etc/openvpn/easy-rsa/vars
 
 # Create Diffie-Helman Pem
 openssl dhparam -out /etc/openvpn/dh2048.pem 2048
