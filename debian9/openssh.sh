@@ -393,7 +393,7 @@ wget -O menu "https://raw.githubusercontent.com/fisabiliyusri/sshsl/master/debia
 wget -O usernew "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/usernew.sh"
 wget -O trial "https://raw.githubusercontent.com/fisabiliyusri/sshsl/master/trial.sh"
 wget -O hapus "https://raw.githubusercontent.com/fisabiliyusri/sshsl/master/debian9/hapus.sh"
-wget -O cek "https://raw.githubusercontent.com/fisabiliyusri/sshsl/master/debian9/user-login.sh"
+wget -O cek "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/user-login.sh"
 wget -O member "https://raw.githubusercontent.com/fisabiliyusri/sshsl/master/debian9/user-list.sh"
 wget -O jurus69 "https://raw.githubusercontent.com/fisabiliyusri/sshsl/master/debian9/restart.sh"
 wget -O speedtest "https://raw.githubusercontent.com/fisabiliyusri/sshsl/master/debian9/speedtest_cli.py"
