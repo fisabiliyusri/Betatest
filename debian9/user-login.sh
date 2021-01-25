@@ -48,8 +48,8 @@ for PID in "${data[@]}"
 do
         #echo "check $PID";
 	NUM=`cat /var/log/auth.log | grep -i openvpn | grep -i "Accepted password for" | grep "openvpn\[$PID\]" | wc -l`;
-	USER=`cat /var/log/auth.log | grep -i openvpn | grep -i "Accepted password for" | grep "openvpn\[$PID\]" | awk '{print $9}'`;
-	IP=`cat /var/log/auth.log | grep -i openvpn | grep -i "Accepted password for" | grep "openvpn\[$PID\]" | awk '{print $11}'`;
+	USER=`cat /var/log/auth.log | grep -i openvpn | grep -i "Accepted password for" | grep "openvpn\[$PID\]" | awk '{print $14}'`;
+	IP=`cat /var/log/auth.log | grep -i openvpn | grep -i "Accepted password for" | grep "openvpn\[$PID\]" | awk '{print $16}'`;
         if [ $NUM -eq 1 ]; then
                 echo "$PID - $USER - $IP";
         fi
@@ -59,17 +59,15 @@ echo "Checking OpenVPN TCP login";
 echo "----------------------";
 
 for PID in "${data[@]}"
-if [ -f "/etc/openvpn/server-tcp.log" ]; then
-	line=`cat /etc/openvpn/server-tcp.log | wc -l`
-	a=$((3+((line-8)/2)))
-	b=$(((line-8)/2))
-	echo " "
-	echo "Memerika User OpenVPN Yang Login";
-	echo "(Username - IP - Terkoneksi Sejak)";
-	echo "-------------------------------------";
-	cat /etc/openvpn/server-tcp.log | head -n $a | tail -n $b | cut -d "," -f 1,2,5 | sed -e 's/,/   /g' > /tmp/vpn-login-db.txt
-	cat /tmp/vpn-login-db.txt
-fi
+do
+        #echo "check $PID";
+	NUM=`cat /etc/openvpn/server-tcp.log | grep -i openvpn | grep -i "Accepted password for" | grep "openvpn\[$PID\]" | wc -l`;
+	USER=`cat /etc/openvpn/server-tcp.log | grep -i openvpn | grep -i "Accepted password for" | grep "openvpn\[$PID\]" | awk '{print $9}'`;
+	IP=`cat /etc/openvpn/server-tcp.log | grep -i openvpn | grep -i "Accepted password for" | grep "openvpn\[$PID\]" | awk '{print $11}'`;
+        if [ $NUM -eq 1 ]; then
+                echo "$PID - $USER - $IP";
+        fi
+done
 echo " "
 echo " "
 done
