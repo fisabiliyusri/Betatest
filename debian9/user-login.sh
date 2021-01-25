@@ -40,8 +40,9 @@ do
                 echo "$PID - $USER - $IP";
         fi
 done
+data=( `ps aux | grep -i openvpn | awk '{print $2}'`);
 echo "----------------------";
-echo "Checking OpenVPN login";
+echo "Checking OpenVPN login 1";
 echo "----------------------";
 
 for PID in "${data[@]}"
@@ -54,8 +55,9 @@ do
                 echo "$PID - $USER - $IP";
         fi
 done
+data=( `ps aux | grep -i openvpn | awk '{print $2}'`);
 echo "----------------------";
-echo "Checking OpenVPN TCP login";
+echo "Checking OpenVPN TCP login 1";
 echo "----------------------";
 
 for PID in "${data[@]}"
@@ -71,7 +73,21 @@ done
 echo " "
 echo " "
 done
+data=( `ps aux | grep -i openvpn | awk '{print $2}'`);
+echo "----------------------";
+echo "Checking OpenVPN login 2";
+echo "----------------------";
 
+for PID in "${data[@]}"
+do
+        #echo "check $PID";
+	NUM=`cat /etc/openvpn/server-udp.log | grep -i openvpn | grep -i "Accepted password for" | grep "openvpn\[$PID\]" | wc -l`;
+	USER=`cat /etc/openvpn/server-udp.log | grep -i openvpn | grep -i "Accepted password for" | grep "openvpn\[$PID\]" | awk '{print $15}'`;
+	IP=`cat /etc/openvpn/server-udp.log | grep -i openvpn | grep -i "Accepted password for" | grep "openvpn\[$PID\]" | awk '{print $17}'`;
+        if [ $NUM -eq 1 ]; then
+                echo "$PID - $USER - $IP";
+        fi
+done
 echo "";
 
 echo "------------------------------------------------"
