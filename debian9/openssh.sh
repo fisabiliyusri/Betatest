@@ -278,6 +278,9 @@ connect = 127.0.0.1:9000
 [openvpn]
 accept = 569
 connect = 127.0.0.1:56969
+accept = 26969
+connect = 127.0.0.1:36969
+
 
 END
 
