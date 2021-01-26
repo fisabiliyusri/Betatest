@@ -33,8 +33,8 @@ mkdir -m 755 /etc/shadowsocks
 cat >> /etc/shadowsocks/shadowsocks.json <<-END
 {
     "server":"0.0.0.0",
-    "server_port":36969,
-    "password":"sulaimanssh",
+    "server_port":7230,
+    "password":"sulaiman",
     "timeout":300,
     "method":"aes-256-cfb",
     "fast_open": true
@@ -113,6 +113,6 @@ sleep 5
 #informasi
 clear
 echo "---------- Informasi --------"
-echo "Shadowsocks       : 36969"
-echo "Shadowsocks + SSL : 26969"
+echo "Shadowsocks       : 7230"
+echo "Shadowsocks + SSL : 7240"
 echo "-----------------------------"
