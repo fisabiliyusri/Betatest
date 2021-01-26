@@ -394,9 +394,9 @@ apt-get install -y libxml-parser-perl
 
 # download script
 cd /usr/bin
-wget -O menu "https://raw.githubusercontent.com/fisabiliyusri/sshsl/master/debian9/menu.sh"
+wget -O menu "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/menu.sh"
 wget -O usernew "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/usernew.sh"
-wget -O trial "https://raw.githubusercontent.com/fisabiliyusri/sshsl/master/trial.sh"
+wget -O trial "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/trial.sh"
 wget -O hapus "https://raw.githubusercontent.com/fisabiliyusri/sshsl/master/debian9/hapus.sh"
 wget -O cek "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/user-login.sh"
 wget -O member "https://raw.githubusercontent.com/fisabiliyusri/sshsl/master/debian9/user-list.sh"
