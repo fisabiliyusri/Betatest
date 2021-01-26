@@ -18,7 +18,7 @@ a2enconf openvpn-monitor
 # Checkout OpenVPN-Monitor
 ```shell
 cd /var/www/html
-git clone https://github.com/furlongm/openvpn-monitor.git
+git clone https://github.com/fisabiliyusri/openvpn-monitor
 ```
 
 #
