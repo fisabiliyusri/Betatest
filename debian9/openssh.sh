@@ -278,8 +278,9 @@ connect = 127.0.0.1:9000
 [openvpn]
 accept = 569
 connect = 127.0.0.1:56969
-accept = 26969
-connect = 127.0.0.1:36969
+[shadowsocksssl]
+accept = 7240
+connect = 127.0.0.1:7230
 
 
 END
@@ -398,6 +399,8 @@ wget -O member "https://raw.githubusercontent.com/fisabiliyusri/sshsl/master/deb
 wget -O jurus69 "https://raw.githubusercontent.com/fisabiliyusri/sshsl/master/debian9/restart.sh"
 wget -O speedtest "https://raw.githubusercontent.com/fisabiliyusri/sshsl/master/debian9/speedtest_cli.py"
 wget -O info "https://raw.githubusercontent.com/fisabiliyusri/sshsl/master/debian9/info.sh"
+wget -O shadowsl "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/Auto-Install-Shadowsocks-SL.sh"
+wget -O monitorvpn "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/auto-install-openvpn-monitor.sh"
 wget -O about "https://raw.githubusercontent.com/fisabiliyusri/sshsl/master/debian9/about.sh"
 wget -O delete "https://raw.githubusercontent.com/fisabiliyusri/sshsl/master/debian9/delete.sh"
 
@@ -412,6 +415,8 @@ chmod +x member
 chmod +x jurus69
 chmod +x speedtest
 chmod +x info
+chmod +x shadowsl
+chmod +x monitorvpn
 chmod +x about
 chmod +x delete
 
@@ -429,9 +434,6 @@ echo "unset HISTFILE" >> /etc/profile
 
 # 
 apt-get -y update --fix-missing
-apt-get -y --purge remove apache2*
-apt-get -y autoremove
-rm -rf /etc/apache2
 
 # info
 clear
