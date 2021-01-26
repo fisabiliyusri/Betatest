@@ -9,11 +9,9 @@ MYIP2="s/xxxxxxxxx/$MYIP/g";
 
 # detail nama perusahaan
 country=ID
-state=SuluruhIndonesia
-locality=JawaSumatera
-organization=sulaimanssh
-organizationalunit=SLSSH
-commonname=telkomsel.com
+state=SeluruhIndonesia
+locality=JawaSumateraKalimantanPapua
+organization=SLSSH
 commonname=www.hbogo.eu
 email=sulaiman.xl@facebook.com
 
