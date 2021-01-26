@@ -179,6 +179,12 @@ echo '<ca>' >> /etc/openvpn/client-tcp.ovpn
 cat /etc/openvpn/ca.crt >> /etc/openvpn/client-tcp.ovpn
 echo '</ca>' >> /etc/openvpn/client-tcp.ovpn
 cp client-tcp.ovpn /home/vps/public_html/
+wget -O /etc/openvpn/569client-ssl.ovpn "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/569client-ssl.conf"
+sed -i $MYIP2 /etc/openvpn/569client-ssl.ovpn;
+echo '<ca>' >> /etc/openvpn/569client-ssl.ovpn
+cat /etc/openvpn/ca.crt >> /569etc/openvpn/client-tcp.ovpn
+echo '</ca>' >> /etc/openvpn/569client-ssl.ovpn
+cp 569client-ssl.ovpn /home/vps/public_html/
 
 echo "===  install neofetch  ==="
 # install neofetch
