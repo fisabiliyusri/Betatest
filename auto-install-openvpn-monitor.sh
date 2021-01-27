@@ -25,18 +25,17 @@ git clone https://github.com/fisabiliyusri/openvpn-monitor.git
 
 
 #
-```shell
+
 cd /var/www/html/openvpn-monitor
 python openvpn-monitor.py
-```
+
 
 #
 ```shell
 cd /var/www/html/openvpn-monitor
 python openvpn-monitor.py -d
-```
 
-done
+
 
 echo " "
 echo " "
