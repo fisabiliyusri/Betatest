@@ -9,6 +9,7 @@ echo "================================================="
 echo "===========       Created by SL       ==========="
 echo "================================================="
 
+
 sleep 5
 
 # Update system repositories
@@ -112,7 +113,12 @@ sleep 5
 
 #informasi
 clear
-echo "---------- Informasi --------"
-echo "Shadowsocks       : 7230"
-echo "Shadowsocks + SSL : 7240"
+IP=`curl ipv4.icanhazip.com`
+echo -e "====Informasi Shadowsocks Account====" 
+echo -e "===== Premium Akun Shadowsocks =====" 
+echo -e "Host : $IP" 
+echo -e "Shadowsocks Port : 7230"
+echo -e "Shadowsocks + SSL(SNI) : 7240"
+echo -e "Password : sulaiman"
+echo -e "Method : aes-256-cfb"
 echo "-----------------------------"
