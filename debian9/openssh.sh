@@ -400,7 +400,7 @@ wget -O trial "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/d
 wget -O hapus "https://raw.githubusercontent.com/fisabiliyusri/sshsl/master/debian9/hapus.sh"
 wget -O cek "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/user-login.sh"
 wget -O member "https://raw.githubusercontent.com/fisabiliyusri/sshsl/master/debian9/user-list.sh"
-wget -O jurus69 "https://raw.githubusercontent.com/fisabiliyusri/sshsl/master/debian9/restart.sh"
+wget -O crot69 "https://raw.githubusercontent.com/fisabiliyusri/sshsl/master/debian9/restart.sh"
 wget -O speedtest "https://raw.githubusercontent.com/fisabiliyusri/sshsl/master/debian9/speedtest_cli.py"
 wget -O info "https://raw.githubusercontent.com/fisabiliyusri/sshsl/master/debian9/info.sh"
 wget -O shadowsl "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/Auto-Install-Shadowsocks-SL.sh"
@@ -417,7 +417,7 @@ chmod +x trial
 chmod +x hapus
 chmod +x cek
 chmod +x member
-chmod +x jurus69
+chmod +x crot69
 chmod +x speedtest
 chmod +x info
 chmod +x shadowsl
