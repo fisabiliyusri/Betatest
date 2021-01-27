@@ -41,6 +41,17 @@ cat >> /etc/shadowsocks/shadowsocks.json <<-END
     "fast_open": true
 }
 END
+# create yogi
+cat >> /etc/shadowsocks/yogi.json <<-END
+{
+    "server":"0.0.0.0",
+    "server_port":7231,
+    "password":"yogi",
+    "timeout":300,
+    "method":"aes-256-cfb",
+    "fast_open": true
+}
+END
 # Optimize Shadowsocks
 cat >> /etc/sysctl.d/local.conf <<-END
 # max open files
@@ -101,10 +112,26 @@ ExecStop=/usr/local/bin/ss-server -c /etc/shadowsocks/shadowsocks.json -a shadow
 [Install]
 WantedBy=multi-user.target
 END
+
+# yogi
+cat >> /etc/systemd/system/shadowsocks@yogi.service <<-END
+[Unit]
+Description=Shadowsocks user yogi proxy server
+[Service]
+User=root
+Group=root
+Type=simple
+ExecStart=/usr/local/bin/ss-server -c /etc/shadowsocks/yogi.json -a shadowsocks -v start
+ExecStop=/usr/local/bin/ss-server -c /etc/shadowsocks/yogi.json -a shadowsocks -v stop
+[Install]
+WantedBy=multi-user.target
+END
 # Enable and start
 systemctl daemon-reload
 systemctl enable shadowsocks
+systemctl enable shadowsocks@yogi
 systemctl start shadowsocks
+systemctl start shadowsocks@yogi
 
 echo "--------------------------------"
 echo "Shadowsocks Installed..."
