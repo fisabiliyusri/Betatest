@@ -2,7 +2,7 @@
 # Script Auto Install Shadowsocks
 clear
 echo "================================================="
-echo "=========== Auto Installer Tunneling ==========="
+echo "=========== Auto Installer Tunneling ============"
 echo "======== Shadowsocks - Shadowsocks SSL =========="
 echo "===========       Ubuntu OS        =============="
 echo "================================================="
@@ -115,7 +115,7 @@ sleep 5
 clear
 IP=`curl ipv4.icanhazip.com`
 echo -e "== Informasi Akun Shadowsocks ==" 
-echo -e "== Premium Akun Shadowsocks   ==" 
+echo -e "== Premium  Akun Shadowsocks  ==" 
 echo -e "Host : $IP" 
 echo -e "Shadowsocks Port : 7230"
 echo -e "Shadowsocks + SSL(SNI) : 7240"
