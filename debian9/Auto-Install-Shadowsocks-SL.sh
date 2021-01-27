@@ -114,11 +114,16 @@ sleep 5
 #informasi
 clear
 IP=`curl ipv4.icanhazip.com`
-echo -e "====Informasi Shadowsocks Account====" 
-echo -e "===== Premium Akun Shadowsocks =====" 
+echo -e "== Informasi Akun Shadowsocks ==" 
+echo -e "== Premium Akun Shadowsocks   ==" 
 echo -e "Host : $IP" 
 echo -e "Shadowsocks Port : 7230"
 echo -e "Shadowsocks + SSL(SNI) : 7240"
 echo -e "Password : sulaiman"
 echo -e "Method : aes-256-cfb"
-echo "-----------------------------"
+echo -e "BadVPN-UDPGW : 7100,7200,7300"
+echo -e "Speed Server : 2 Gbps" 
+echo -e "Transfer : 2 TB" 
+echo -e "================================"
+echo -e "Mod by Sulaiman L" 
+echo -e "================================"
