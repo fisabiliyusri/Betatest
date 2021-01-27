@@ -2,7 +2,7 @@
 # Script Auto Install Shadowsocks
 clear
 echo "================================================="
-echo "=========== Auto Insstaller Tunneling ==========="
+echo "=========== Auto Installer Tunneling ==========="
 echo "======== Shadowsocks - Shadowsocks SSL =========="
 echo "===========       Ubuntu OS        =============="
 echo "================================================="
