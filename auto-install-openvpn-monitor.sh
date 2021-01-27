@@ -31,7 +31,7 @@ python openvpn-monitor.py
 
 
 #
-```shell
+
 cd /var/www/html/openvpn-monitor
 python openvpn-monitor.py -d
 
