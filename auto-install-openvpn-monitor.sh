@@ -23,6 +23,10 @@ systemctl restart apache2
 a2enconf openvpn-monitor
 /etc/init.d/apache2 restart
 
+# copy
+cd /var/www/html/openvpn-monitor
+cp openvpn-monitor.conf.example openvpn-monitor.conf
+
 # test
 
 cd /var/www/html/openvpn-monitor
