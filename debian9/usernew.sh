@@ -1,17 +1,21 @@
 # !/bin/bash
 # openvpn config
-IP=`curl ipv4.icanhazip.com`
-sed -i $IP /etc/openvpn/client-udp.ovpn;
+# initialisasi var
+export DEBIAN_FRONTEND=noninteractive
+OS=`uname -m`;
+MYIP=$(wget -qO- ipv4.icanhazip.com);
+MYIP2="s/xxxxxxxxx/$MYIP/g";
+sed -i $MYIP2 /etc/openvpn/client-udp.ovpn;
 echo '<ca>' >> /etc/openvpn/client-udp.ovpn
 cat /etc/openvpn/ca.crt >> /etc/openvpn/client-udp.ovpn
 echo '</ca>' >> /etc/openvpn/client-udp.ovpn
 cp client-udp.ovpn /home/vps/public_html/
-sed -i $IP /etc/openvpn/client-tcp.ovpn;
+sed -i $MYIP2 /etc/openvpn/client-tcp.ovpn;
 echo '<ca>' >> /etc/openvpn/client-tcp.ovpn
 cat /etc/openvpn/ca.crt >> /etc/openvpn/client-tcp.ovpn
 echo '</ca>' >> /etc/openvpn/client-tcp.ovpn
 cp client-tcp.ovpn /home/vps/public_html/
-sed -i $IP /etc/openvpn/569client-ssl.ovpn;
+sed -i $MYIP2 /etc/openvpn/569client-ssl.ovpn;
 echo '<ca>' >> /etc/openvpn/569client-ssl.ovpn
 cat /etc/openvpn/ca.crt >> /etc/openvpn/569client-ssl.ovpn
 echo '</ca>' >> /etc/openvpn/569client-ssl.ovpn
