@@ -9,17 +9,17 @@ sed -i $MYIP2 /etc/openvpn/client-udp.ovpn;
 echo '<ca>' >> /etc/openvpn/client-udp.ovpn
 cat /etc/openvpn/ca.crt >> /etc/openvpn/client-udp.ovpn
 echo '</ca>' >> /etc/openvpn/client-udp.ovpn
-cp client-udp.ovpn /home/vps/public_html/
+cp /etc/openvpn/client-udp.ovpn /home/vps/public_html/
 sed -i $MYIP2 /etc/openvpn/client-tcp.ovpn;
 echo '<ca>' >> /etc/openvpn/client-tcp.ovpn
 cat /etc/openvpn/ca.crt >> /etc/openvpn/client-tcp.ovpn
 echo '</ca>' >> /etc/openvpn/client-tcp.ovpn
-cp client-tcp.ovpn /home/vps/public_html/
+cp /etc/openvpn/client-tcp.ovpn /home/vps/public_html/
 sed -i $MYIP2 /etc/openvpn/569client-ssl.ovpn;
 echo '<ca>' >> /etc/openvpn/569client-ssl.ovpn
 cat /etc/openvpn/ca.crt >> /etc/openvpn/569client-ssl.ovpn
 echo '</ca>' >> /etc/openvpn/569client-ssl.ovpn
-cp 569client-ssl.ovpn /home/vps/public_html/
+cp /etc/openvpn/569client-ssl.ovpn /home/vps/public_html/
 
 # Script auto create user SSH
 
@@ -60,6 +60,6 @@ echo -e "Config OpenVPN (UDP 1945): "
 echo -e "http:// $IP :81/client-udp.ovpn"
 echo -e "=============================" 
 echo -e "Config OpenVPN (TCP+SSL 569): "
-echo -e "http:// $IP :81/569client-ssl.ovpn
+echo -e "http:// $IP :81/569client-ssl.ovpn"
 echo -e "=============================" 
 echo -e ""
