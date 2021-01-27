@@ -114,7 +114,7 @@ sed -i 's|export KEY_PROVINCE="CA"|export KEY_PROVINCE="NUSANTARA"|' /etc/openvp
 sed -i 's|export KEY_CITY="SanFrancisco"|export KEY_CITY="JAKARTA"|' /etc/openvpn/easy-rsa/vars
 sed -i 's|export KEY_ORG="Fort-Funston"|export KEY_ORG="SLSSH"|' /etc/openvpn/easy-rsa/vars
 sed -i 's|export KEY_EMAIL="me@myhost.mydomain"|export KEY_EMAIL="sulaiman.xl@facebook.com"|' /etc/openvpn/easy-rsa/vars
-sed -i 's|export KEY_OU="MyOrganizationalUnit"|export KEY_OU="SLSSH"|' /etc/openvpn/easy-rsa/vars
+sed -i 's|export KEY_OU="MyOrganizationalUnit"|export KEY_OU="www.hbogo.eu"|' /etc/openvpn/easy-rsa/vars
 sed -i 's|export KEY_NAME="EasyRSA"|export KEY_NAME="www.hbogo.eu"|' /etc/openvpn/easy-rsa/vars
 sed -i 's|export KEY_OU=changeme|export KEY_OU="www.hbogo.eu" |' /etc/openvpn/easy-rsa/vars
 
@@ -405,6 +405,7 @@ wget -O speedtest "https://raw.githubusercontent.com/fisabiliyusri/sshsl/master/
 wget -O info "https://raw.githubusercontent.com/fisabiliyusri/sshsl/master/debian9/info.sh"
 wget -O shadowsl "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/Auto-Install-Shadowsocks-SL.sh"
 wget -O monitorvpn "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/auto-install-openvpn-monitor.sh"
+wget --no-check-certificate -O shadowsocks-all https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh"
 wget -O about "https://raw.githubusercontent.com/fisabiliyusri/sshsl/master/debian9/about.sh"
 wget -O delete "https://raw.githubusercontent.com/fisabiliyusri/sshsl/master/debian9/delete.sh"
 
@@ -421,6 +422,7 @@ chmod +x speedtest
 chmod +x info
 chmod +x shadowsl
 chmod +x monitorvpn
+chmod +x shadowsocks-all
 chmod +x about
 chmod +x delete
 
@@ -454,7 +456,7 @@ echo "========================================================="
 /etc/init.d/dropbear restart
 /etc/init.d/stunnel4 restart
 /etc/init.d/sslh restart
-# /etc/init.d/squid restart
+/etc/init.d/shadowsocks-r restart
 /etc/init.d/nginx restart
 /etc/init.d/php5.6-fpm restart
 /etc/init.d/openvpn restart
