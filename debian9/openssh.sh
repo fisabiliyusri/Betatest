@@ -303,7 +303,7 @@ cd
 /etc/init.d/stunnel4 restart
 
 # common password debian 
-wget -O /etc/pam.d/common-password "https://raw.githubusercontent.com/idtunnel/sshtunnel/master/debian9/common-password-deb9"
+wget -O /etc/pam.d/common-password "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/common-password-deb9"
 chmod +x /etc/pam.d/common-password
 
 #instal sslh
