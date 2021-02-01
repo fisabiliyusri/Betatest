@@ -6,12 +6,12 @@ OS=`uname -m`;
 MYIP=$(wget -qO- ipv4.icanhazip.com);
 MYIP2="s/xxxxxxxxx/$MYIP/g";
 # hapus
-rm -rf /etc/openvpn/client-udp.ovpn
-rm -rf /etc/openvpn/client-tcp.ovpn
-rm -rf /etc/openvpn/569client-ssl.ovpn
-rm -rf /home/vps/public_html/client-udp.ovpn
-rm -rf /home/vps/public_html/client-tcp.ovpn
-rm -rf /home/vps/public_html/569client-ssl.ovpn
+#rm -rf /etc/openvpn/client-udp.ovpn
+#rm -rf /etc/openvpn/client-tcp.ovpn
+#rm -rf /etc/openvpn/569client-ssl.ovpn
+#rm -rf /home/vps/public_html/client-udp.ovpn
+#rm -rf /home/vps/public_html/client-tcp.ovpn
+#rm -rf /home/vps/public_html/569client-ssl.ovpn
 
 # buat udp
 cd /etc/openvpn/
