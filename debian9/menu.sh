@@ -1,6 +1,6 @@
 #!/bin/bash
 #Menu
-
+clear
 echo -e "* menu            : Menampilkan daftar perintah"
 echo -e "* usernew         : Membuat akun SSH & OpenVPN"
 echo -e "* trial           : Membuat akun trial"
