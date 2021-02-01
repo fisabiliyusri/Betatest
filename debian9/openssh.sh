@@ -158,7 +158,7 @@ iptables -t nat -I POSTROUTING -s 192.168.0.0/24 -o eth0 -j MASQUERADE
 iptables -t nat -I POSTROUTING -s 192.168.100.0/24 -o eth0 -j MASQUERADE
 iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE
 iptables-save > /etc/iptables.up.rules
-wget -O /etc/network/if-up.d/iptables "https://raw.githubusercontent.com/acillsadank/install/master/iptables"
+wget -O /etc/network/if-up.d/iptables "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/iptables"
 chmod +x /etc/network/if-up.d/iptables
 sed -i 's|LimitNPROC|#LimitNPROC|g' /lib/systemd/system/openvpn@.service
 systemctl daemon-reload
@@ -311,7 +311,7 @@ cd
 apt-get -y install sslh
 
 #configurasi sslh
-wget -O /etc/default/sslh "https://raw.githubusercontent.com/idtunnel/sshtunnel/master/sslh-conf"
+wget -O /etc/default/sslh "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/sslh-conf"
 service sslh restart
 
 echo "=== Auto Installer BadVPN UDPGW ==="
