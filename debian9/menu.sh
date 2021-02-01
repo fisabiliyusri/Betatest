@@ -14,6 +14,7 @@ echo -e "* speedtest       : Speedtest VPS"
 echo -e "* shadowsl        : Install Shadowsocks"
 echo -e "* monitorvpn      : Install OpenVPN-Monitor"
 echo -e "* shadowsocks-all : Install Shadowsocks Lengkap"
+echo -e "* fixvpn          : Perbaiki Server OpenVPN
 echo -e "* info            : Menampilkan informasi sistem"
 echo -e "* about           : Info script auto install"
 echo -e "* exit            : Keluar dari Putty/Connecbot/"
