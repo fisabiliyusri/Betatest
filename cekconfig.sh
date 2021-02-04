@@ -6,7 +6,7 @@ echo -e "============================="
 echo -e "Config HI Maxstream (Tsel)"
 echo -e "Host: 81/SL-Maxstream.ehi"
 echo -e "============================="
-Config HI Whatsapp/Kemdibud (Tsel)
+echo -e "Config HI Whatsapp/Kemdibud (Tsel)"
 echo -e "Host: 81/SL-Wa-Kemdikbud.ehi"
 echo -e "============================="
 echo -e "Config HI Youtube (Tsel)"
@@ -24,5 +24,4 @@ echo -e "============================="
 echo -e "Config ehi (HTTP Injector) "
 echo -e "Config ovpn "
 echo -e "(OpenVPN HTTP Custom(Open Cfg VPN))"
-
-Mod By Sulaiman L
+echo -e "Mod by Sulaiman L" 
