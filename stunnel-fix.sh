@@ -1,20 +1,6 @@
 #!/bin/bash
 #created : 
 
-# initialisasi var
-export DEBIAN_FRONTEND=noninteractive
-OS=`uname -m`;
-MYIP=$(wget -qO- ipv4.icanhazip.com);
-MYIP2="s/xxxxxxxxx/$MYIP/g";
-
-# detail nama perusahaan
-country=ID
-state=SeluruhIndonesia
-locality=JawaSumateraKalimantanPapua
-organization=SLSSH
-commonname=www.hbogo.eu
-email=sulaiman.xl@facebook.com
-
 echo "===  install stunnel  ===="
 # install stunnel
 apt-get install stunnel4 -y
@@ -73,9 +59,6 @@ END
 echo "=================  membuat Sertifikat OpenSSL ======================"
 echo "========================================================="
 #membuat sertifikat
-openssl genrsa -out key.pem 2048
-openssl req -new -x509 -key key.pem -out cert.pem -days 1095 \
--subj "/C=$country/ST=$state/L=$locality/O=$organization/OU=$organizationalunit/CN=$commonname/emailAddress=$email"
 cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
 
 # konfigurasi stunnel
