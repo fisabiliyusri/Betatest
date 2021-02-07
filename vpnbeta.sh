@@ -96,6 +96,7 @@ verb 2
 ncp-disable
 cipher none
 auth none
+management 127.0.0.1 5555
 myOpenVPNconf
 
 cat <<'myOpenVPNconf2' > /etc/openvpn/server_udp.conf
@@ -127,6 +128,7 @@ verb 2
 ncp-disable
 cipher none
 auth none
+management 127.0.0.1 5556
 myOpenVPNconf2
 
 # install openvpn
@@ -353,7 +355,7 @@ client
 dev tun
 proto tcp
 setenv FRIENDLY_NAME "SL VPN Kuota Lineme"
-remote $IPADDR $OpenVPN_TCP_Port
+remote xxxxxxxxx $OpenVPN_TCP_Port
 remote-cert-tls server
 connect-retry infinite
 resolv-retry infinite
@@ -369,7 +371,7 @@ redirect-gateway def1
 setenv CLIENT_CERT 0
 reneg-sec 0
 verb 1
-http-proxy $IPADDR $Squid_Port1
+http-proxy xxxxxxxxx $Squid_Port1
 http-proxy-option CUSTOM-HEADER Host line.me
 http-proxy-option CUSTOM-HEADER X-Online-Host line.me
 http-proxy-option CUSTOM-HEADER X-Forwarded-For line.me
@@ -386,7 +388,7 @@ client
 dev tun
 proto udp
 setenv FRIENDLY_NAME "SL VPN UDP"
-remote $IPADDR $OpenVPN_UDP_Port
+remote xxxxxxxxx $OpenVPN_UDP_Port
 remote-cert-tls server
 resolv-retry infinite
 float
@@ -417,7 +419,7 @@ client
 dev tun
 proto tcp-client
 setenv FRIENDLY_NAME "SL VPN TCP"
-remote $IPADDR $OpenVPN_TCP_Port
+remote xxxxxxxxx $OpenVPN_TCP_Port
 remote-cert-tls server
 bind
 float
@@ -451,7 +453,7 @@ client
 dev tun
 proto tcp-client
 setenv FRIENDLY_NAME "SL VPN Kouta Whatsapp"
-remote $IPADDR $OpenVPN_TCP_Port
+remote xxxxxxxxx $OpenVPN_TCP_Port
 nobind
 persist-key
 persist-tun
@@ -472,7 +474,7 @@ redirect-gateway def1
 setenv CLIENT_CERT 0
 dhcp-option DNS 1.1.1.1
 dhcp-option DNS 1.0.0.1
-http-proxy $IPADDR $Squid_Port1
+http-proxy xxxxxxxxx $Squid_Port1
 http-proxy-option VERSION 1.1
 http-proxy-option CUSTOM-HEADER Host www.whatsapp.net.whatsapp.com
 http-proxy-option CUSTOM-HEADER X-Forwarded-For www.whatsapp.net.whatsapp.com
@@ -490,7 +492,7 @@ client
 dev tun
 proto tcp-client
 setenv FRIENDLY_NAME "SL Youtube Tsel"
-remote $IPADDR $OpenVPN_TCP_Port
+remote xxxxxxxxx $OpenVPN_TCP_Port
 nobind
 persist-key
 persist-tun
@@ -511,7 +513,7 @@ redirect-gateway def1
 setenv CLIENT_CERT 0
 dhcp-option DNS 1.1.1.1
 dhcp-option DNS 1.0.0.1
-http-proxy $IPADDR $Squid_Port1
+http-proxy xxxxxxxxx $Squid_Port1
 http-proxy-option CUSTOM-HEADER CONNECT HTTP/1.0
 http-proxy-option CUSTOM-HEADER Host www.googlevideo.com
 http-proxy-option CUSTOM-HEADER X-Online-Host www.googlevideo.com
@@ -530,7 +532,7 @@ client
 dev tun
 proto tcp-client
 setenv FRIENDLY_NAME "SL VPN Beta Test"
-remote $IPADDR $OpenVPN_TCP_Port
+remote xxxxxxxxx $OpenVPN_TCP_Port
 nobind
 persist-key
 persist-tun
@@ -551,7 +553,7 @@ redirect-gateway def1
 setenv CLIENT_CERT 0
 dhcp-option DNS 1.1.1.1
 dhcp-option DNS 1.0.0.1
-http-proxy $IPADDR $Squid_Port1
+http-proxy xxxxxxxxx $Squid_Port1
 http-proxy-option CUSTOM-HEADER CONNECT HTTP/1.0
 http-proxy-option CUSTOM-HEADER Host sl.whatsapp.com.spotify.com.line-apps.com
 http-proxy-option CUSTOM-HEADER X-Online-Host sl.whatsapp.com.spotify.com.line-apps.com
