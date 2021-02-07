@@ -233,7 +233,7 @@ rm -rf /etc/squid/squid.con*
 # Creating Squid server config using cat eof tricks
 cat <<'mySquid' > /etc/squid/squid.conf
 # My Squid Proxy Server Config
-acl VPN dst IP-ADDRESS/32
+acl VPN dst xxxxxxxxx/32
 http_access allow VPN
 http_access allow SSH
 http_access deny all 
