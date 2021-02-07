@@ -235,6 +235,7 @@ cat <<'mySquid' > /etc/squid/squid.conf
 # My Squid Proxy Server Config
 acl VPN dst IP-ADDRESS/32
 http_access allow VPN
+http_access allow SSH
 http_access deny all 
 http_port 0.0.0.0:Squid_Port1
 http_port 0.0.0.0:Squid_Port2
@@ -333,7 +334,7 @@ server {
 myNginxC
 
 # Setting our nginx config port for .ovpn download site
-sed -i "s|myNginx|$OvpnDownload_Port|g" /etc/nginx/conf.d/johnfordtv-ovpn-config.conf
+sed -i "s|myNginx|$OvpnDownload_Port|g" /etc/nginx/conf.d/sl-ovpn-config.conf
 
 # Removing Default nginx page(port 80)
 rm -rf /etc/nginx/sites-*
