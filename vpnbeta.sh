@@ -4,6 +4,18 @@ export DEBIAN_FRONTEND=noninteractive
 OS=`uname -m`;
 MYIP=$(wget -qO- ipv4.icanhazip.com);
 MYIP2="s/xxxxxxxxx/$MYIP/g";
+# OpenVPN Ports
+OpenVPN_TCP_Port='56969'
+OpenVPN_UDP_Port='1945'
+
+# Squid Ports
+Squid_Port1='8080'
+Squid_Port2='3128'
+Squid_Port3='60000'
+
+# OpenVPN Config Download Port
+OvpnDownload_Port='85' # Before changing this value, please read this document. It contains all unsafe ports for Google Chrome Browser, please read from line #23 to line #89: https://chromium.googlesource.com/chromium/src.git/+/refs/heads/master/net/base/port_util.cc
+
 
 # set time GMT +7
 ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
@@ -707,6 +719,8 @@ systemctl restart nginx
 cd /var/www/openvpn
 zip -qq -r configs.zip *.ovpn
 cd
+apt-get -y update --fix-missing
+
 echo " "
 echo "Application & Port Information"  | tee -a log-install.txt
 echo "   - OpenVPN		: TCP $OpenVPN_TCP_Port UDP $OpenVPN_UDP_Port "  | tee -a log-install.txt
