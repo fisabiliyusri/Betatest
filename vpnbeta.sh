@@ -446,7 +446,7 @@ echo -e "Restarting proxy server..."
 systemctl restart squid
 
 # Creating nginx config for our ovpn config downloads webserver
-cat <<'myNginxC' > /etc/nginx/conf.d/johnfordtv-ovpn-config.conf
+cat <<'myNginxC' > /etc/nginx/conf.d/sl-ovpn-config.conf
 # My OpenVPN Config Download Directory
 server {
  listen 0.0.0.0:myNginx;
@@ -466,3 +466,258 @@ rm -rf /etc/nginx/sites-*
 rm -rf /var/www/openvpn
 mkdir -p /var/www/openvpn
 
+#  Buat Config OpenVPN 
+
+cat <<EOF16> /var/www/openvpn/line.me-tcp.ovpn
+# SulaimanL VPN Premium Script
+# SL OpenVPN Service TCP
+# Kuota Line /Unliapps/Unlimax
+client
+dev tun
+proto tcp
+setenv FRIENDLY_NAME "SL VPN Kuota Lineme"
+remote $IPADDR $OpenVPN_TCP_Port
+remote-cert-tls server
+connect-retry infinite
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+auth-user-pass
+auth none
+auth-nocache
+cipher none
+comp-lzo
+redirect-gateway def1
+setenv CLIENT_CERT 0
+reneg-sec 0
+verb 1
+http-proxy $IPADDR $Squid_Port1
+http-proxy-option CUSTOM-HEADER Host line.me
+http-proxy-option CUSTOM-HEADER X-Online-Host line.me
+http-proxy-option CUSTOM-HEADER X-Forwarded-For line.me
+
+<ca>
+$(cat /etc/openvpn/ca.crt)
+</ca>
+EOF16
+
+cat <<EOF162> /var/www/openvpn/sl-udp.ovpn
+# SulaimanL VPN Premium Script
+# SL OpenVPN Service UDP
+client
+dev tun
+proto udp
+setenv FRIENDLY_NAME "SL VPN UDP"
+remote $IPADDR $OpenVPN_UDP_Port
+remote-cert-tls server
+resolv-retry infinite
+float
+fast-io
+nobind
+persist-key
+persist-remote-ip
+persist-tun
+auth-user-pass
+auth none
+auth-nocache
+cipher none
+comp-lzo
+redirect-gateway def1
+setenv CLIENT_CERT 0
+reneg-sec 0
+verb 1
+
+<ca>
+$(cat /etc/openvpn/ca.crt)
+</ca>
+EOF162
+
+cat <<EOF17> /var/www/openvpn/tcp.ovpn
+# SulaimanL VPN Premium Script
+# SL OpenVPN Service TCP
+client
+dev tun
+proto tcp-client
+setenv FRIENDLY_NAME "SL VPN TCP"
+remote $IPADDR $OpenVPN_TCP_Port
+remote-cert-tls server
+bind
+float
+mute-replay-warnings
+connect-retry-max 9999
+redirect-gateway def1
+connect-retry 0 1
+resolv-retry infinite
+setenv CLIENT_CERT 0
+persist-tun
+persist-key
+auth-user-pass
+auth none
+auth-nocache
+auth-retry interact
+cipher none
+comp-lzo
+reneg-sec 0
+verb 0
+nice -20
+<ca>
+$(cat /etc/openvpn/ca.crt)
+</ca>
+EOF17
+
+cat <<EOF152> /var/www/openvpn/whatsapp.ovpn
+# SulaimanL VPN Premium Script
+# SL OpenVPN Service TCP
+# Kuota Whatsapp Telkomsel
+client
+dev tun
+proto tcp-client
+setenv FRIENDLY_NAME "SL VPN Kouta Whatsapp"
+remote $IPADDR $OpenVPN_TCP_Port
+nobind
+persist-key
+persist-tun
+comp-lzo
+keepalive 10 120
+tls-client
+remote-cert-tls server
+verb 2
+auth-user-pass
+cipher none
+auth none
+auth-nocache
+auth-retry interact
+connect-retry 0 1
+nice -20
+reneg-sec 0
+redirect-gateway def1
+setenv CLIENT_CERT 0
+dhcp-option DNS 1.1.1.1
+dhcp-option DNS 1.0.0.1
+http-proxy $IPADDR $Squid_Port1
+http-proxy-option VERSION 1.1
+http-proxy-option CUSTOM-HEADER Host www.whatsapp.net.whatsapp.com
+http-proxy-option CUSTOM-HEADER X-Forwarded-For www.whatsapp.net.whatsapp.com
+
+<ca>
+$(cat /etc/openvpn/ca.crt)
+</ca>
+EOF152
+
+cat <<EOF1152> /var/www/openvpn/youtube.ovpn
+# SulaimanL VPN Premium Script
+# SL OpenVPN Service TCP
+# Kuota Youtube Telkomsel
+client
+dev tun
+proto tcp-client
+setenv FRIENDLY_NAME "SL Youtube Tsel"
+remote $IPADDR $OpenVPN_TCP_Port
+nobind
+persist-key
+persist-tun
+comp-lzo
+keepalive 10 120
+tls-client
+remote-cert-tls server
+verb 3
+auth-user-pass
+cipher none
+auth none
+auth-nocache
+auth-retry interact
+connect-retry 0 1
+nice -20
+reneg-sec 0
+redirect-gateway def1
+setenv CLIENT_CERT 0
+dhcp-option DNS 1.1.1.1
+dhcp-option DNS 1.0.0.1
+http-proxy $IPADDR $Squid_Port1
+http-proxy-option CUSTOM-HEADER CONNECT HTTP/1.0
+http-proxy-option CUSTOM-HEADER Host www.googlevideo.com
+http-proxy-option CUSTOM-HEADER X-Online-Host www.googlevideo.com
+http-proxy-option CUSTOM-HEADER X-Forward-Host www.googlevideo.com
+http-proxy-option CUSTOM-HEADER Connection Keep-Alive
+
+<ca>
+$(cat /etc/openvpn/ca.crt)
+</ca>
+EOF1152
+
+cat <<EOF1632> /var/www/openvpn/beta.ovpn
+# Sulaiman VPN Premium Script
+# SL OpenVPN Service
+client
+dev tun
+proto tcp-client
+setenv FRIENDLY_NAME "SL VPN Beta Test"
+remote $IPADDR $OpenVPN_TCP_Port
+nobind
+persist-key
+persist-tun
+comp-lzo
+keepalive 10 120
+tls-client
+remote-cert-tls server
+verb 2
+auth-user-pass
+cipher none
+auth none
+auth-nocache
+auth-retry interact
+connect-retry 0 1
+nice -20
+reneg-sec 0
+redirect-gateway def1
+setenv CLIENT_CERT 0
+dhcp-option DNS 1.1.1.1
+dhcp-option DNS 1.0.0.1
+http-proxy $IPADDR $Squid_Port1
+http-proxy-option CUSTOM-HEADER CONNECT HTTP/1.0
+http-proxy-option CUSTOM-HEADER Host sl.whatsapp.com.spotify.com.line-apps.com
+http-proxy-option CUSTOM-HEADER X-Online-Host sl.whatsapp.com.spotify.com.line-apps.com
+http-proxy-option CUSTOM-HEADER X-Forward-Host sl.whatsapp.com.spotify.com.line-apps.com
+http-proxy-option CUSTOM-HEADER Connection Keep-Alive
+
+<ca>
+$(cat /etc/openvpn/ca.crt)
+</ca>
+EOF1632
+
+# Creating OVPN download site index.html
+cat <<'mySiteOvpn' > /var/www/openvpn/index.html
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Simple OVPN Download site by SulaimanL -->
+
+<head><meta charset="utf-8" /><title>SulaimanL OVPN Config Download</title><meta name="description" content="MyScriptName Server" /><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" /><meta name="theme-color" content="#000000" /><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"><link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"><link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.3/css/mdb.min.css" rel="stylesheet"></head><body><div class="container justify-content-center" style="margin-top:9em;margin-bottom:5em;"><div class="col-md"><div class="view"><img src="https://openvpn.net/wp-content/uploads/openvpn.jpg" class="card-img-top"><div class="mask rgba-white-slight"></div></div><div class="card"><div class="card-body"><h5 class="card-title">Config List</h5><br /><ul class="list-group"><li class="list-group-item justify-content-between align-items-center" style="margin-bottom:1em;"><p>Mod By SL <span class="badge light-blue darken-4">Android/iOS/PC/Modem</span><br /><small> UDP TCL SSL</small></p><a class="btn btn-outline-success waves-effect btn-sm" href="http://IP-ADDRESS:NGINXPORT/configs.zip" style="float:right;"><i class="fa fa-download"></i> Download</a></li><li class="list-group-item justify-content-between align-items-center" style="margin-bottom:1em;"><p>For Sun <span class="badge light-blue darken-4">Android/iOS/PC/Modem</span><br /><small> TCP+Proxy Server UDP</small></p><a class="btn btn-outline-success waves-effect btn-sm" href="http://IP-ADDRESS:NGINXPORT/configs.zip" style="float:right;"><i class="fa fa-download"></i> Download</a></li><li class="list-group-item justify-content-between align-items-center" style="margin-bottom:1em;"><p>For SL <span class="badge light-blue darken-4">Android/iOS/PC/Modem</span><br /><small> config openvpn</small></p><a class="btn btn-outline-success waves-effect btn-sm" href="http://IP-ADDRESS:NGINXPORT/configs.zip" style="float:right;"><i class="fa fa-download"></i> Download</a></li><li class="list-group-item justify-content-between align-items-center" style="margin-bottom:1em;"><p>For Sun <span class="badge light-blue darken-4">Modem</span><br /><small> config openvpn</small></p><a class="btn btn-outline-success waves-effect btn-sm" href="http://IP-ADDRESS:NGINXPORT/configs.zip" style="float:right;"><i class="fa fa-download"></i> Download</a></li></ul></div></div></div></div></body></html>
+mySiteOvpn
+ 
+ # Setting template's correct name,IP address and nginx Port
+sed -i "s|NGINXPORT|$OvpnDownload_Port|g" /var/www/openvpn/index.html
+sed -i "s|IP-ADDRESS|$IPADDR|g" /var/www/openvpn/index.html
+
+# Restarting nginx service
+systemctl restart nginx
+ 
+ # Creating all .ovpn config archives
+cd /var/www/openvpn
+zip -qq -r configs.zip *.ovpn
+cd
+echo " "
+echo "Application & Port Information"  | tee -a log-install.txt
+echo "   - OpenVPN		: TCP $OpenVPN_TCP_Port UDP $OpenVPN_UDP_Port "  | tee -a log-install.txt
+echo "   - Squid Proxy	: $Squid_Port1 , $Squid_Port2 (limit to IP Server)"  | tee -a log-install.txt
+echo "   - Squid ELITE	: $Squid_Port3 (limit to IP Server)"  | tee -a log-install.txt
+echo "   - Webmin                  : http://$IPADDR:10000/"  | tee -a log-install.txt
+echo "OpenVPN Configs Download"  | tee -a log-install.txt
+echo "   - OpenVPN Link           : http://$IPADDR:85/configs.zip"  | tee -a log-install.txt
+echo " SulaimanL"  | tee -a log-install.txt
+echo " Facebook: https://fb.me/sulaiman.xl"  | tee -a log-install.txt
+echo " Please Reboot your VPS"
+
+# Clearing all logs from installation
+rm -rf /root/.bash_history && history -c && echo '' > /var/log/syslog
