@@ -7,7 +7,8 @@ echo -e "============================="| lolcat
 cd /var/www/openvpn
 ls
 echo -e " Semua Config" | lolcat
-echo -e "$IP:85/configs.zip" | lolcat
+echo -e "http://$IP:85/configs.zip" | lolcat
+echo -e "http://$IP:85/index.html" | lolcat
 echo -e "=============================" | lolcat
 echo -e "  Config .ehi (HTTP Injector) " | lolcat
 echo -e "  Config .ovpn (OpenVPN)" | lolcat
