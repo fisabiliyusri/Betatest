@@ -622,7 +622,7 @@ mySiteOvpn
  
  # Setting template's correct name,IP address and nginx Port
 sed -i "s|NGINXPORT|$OvpnDownload_Port|g" /var/www/openvpn/index.html
-sed -i "s|IP-ADDRESS|$IPADDR|g" /var/www/openvpn/index.html
+sed -i "s|xxxxxxxxx|$MYIP|g" /var/www/openvpn/index.html
 
 # Restarting nginx service
 systemctl restart nginx
@@ -631,6 +631,23 @@ systemctl restart nginx
 cd /var/www/openvpn
 zip -qq -r configs.zip *.ovpn
 cd
+apt-get -y update --fix-missing
+
+echo " "
+echo "Application & Port Information"  | tee -a log-install.txt
+echo "   - OpenVPN		: TCP $OpenVPN_TCP_Port UDP $OpenVPN_UDP_Port "  | tee -a log-install.txt
+echo "   - Squid Proxy	: $Squid_Port1 , $Squid_Port2 (limit to IP Server)"  | tee -a log-install.txt
+echo "   - Squid ELITE	: $Squid_Port3 (limit to IP Server)"  | tee -a log-install.txt
+echo "   - Webmin                  : http://$MYIP:10000/"  | tee -a log-install.txt
+echo "OpenVPN Configs Download"  | tee -a log-install.txt
+echo "   - OpenVPN Link           : http://$MYIP:85/configs.zip"  | tee -a log-install.txt
+echo " SulaimanL"  | tee -a log-install.txt
+echo " Facebook: https://fb.me/sulaiman.xl"  | tee -a log-install.txt
+echo " Please Reboot your VPS"
+
+# Clearing all logs from installation
+rm -rf /root/.bash_history && history -c && echo '' > /var/log/syslog
+
 }
 function ip_address(){
   local IP="$( ip addr | egrep -o '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | egrep -v "^192\.168|^172\.1[6-9]\.|^172\.2[0-9]\.|^172\.3[0-2]\.|^10\.|^127\.|^255\.|^0\." | head -n 1 )"
@@ -639,19 +656,3 @@ function ip_address(){
   [ ! -z "${IP}" ] && echo "${IP}" || echo
 } 
 
-apt-get -y update --fix-missing
-
-echo " "
-echo "Application & Port Information"  | tee -a log-install.txt
-echo "   - OpenVPN		: TCP $OpenVPN_TCP_Port UDP $OpenVPN_UDP_Port "  | tee -a log-install.txt
-echo "   - Squid Proxy	: $Squid_Port1 , $Squid_Port2 (limit to IP Server)"  | tee -a log-install.txt
-echo "   - Squid ELITE	: $Squid_Port3 (limit to IP Server)"  | tee -a log-install.txt
-echo "   - Webmin                  : http://$IPADDR:10000/"  | tee -a log-install.txt
-echo "OpenVPN Configs Download"  | tee -a log-install.txt
-echo "   - OpenVPN Link           : http://$IPADDR:85/configs.zip"  | tee -a log-install.txt
-echo " SulaimanL"  | tee -a log-install.txt
-echo " Facebook: https://fb.me/sulaiman.xl"  | tee -a log-install.txt
-echo " Please Reboot your VPS"
-
-# Clearing all logs from installation
-rm -rf /root/.bash_history && history -c && echo '' > /var/log/syslog
