@@ -1,27 +1,15 @@
 # !/bin/bash
 # cekconfig = melihat daftar config
 
+IP=`curl ipv4.icanhazip.com`
 echo -e "  List Config Yang Tersedia" | lolcat
 echo -e "============================="| lolcat
-echo -e "  Config HI Maxstream (Tsel)" | lolcat
-echo -e "Host: 85/SL-Maxstream.ehi" | lolcat
+cd /var/www/openvpn
+ls
+echo -e " Semua Config" | lolcat
+echo -e "$IP:85/configs.zip" | lolcat
 echo -e "=============================" | lolcat
-echo -e "  Config HI Whatsapp/Kemdibud (Tsel)" | lolcat
-echo -e "Host: 85/SL-Wa-Kemdikbud.ehi" | lolcat
-echo -e "=============================" | lolcat
-echo -e "  Config HI Youtube (Tsel)" | lolcat
-echo -e "Host: 85/SL-YoutubeTsel.ehi" | lolcat
-echo -e "=============================" | lolcat
-echo -e "  Config OpenVPN TCP 56969:" | lolcat
-echo -e "Host: 85/client-tcp.ovpn" | lolcat
-echo -e "=============================" | lolcat
-echo -e "  Config OpenVPN UDP 1945: " | lolcat
-echo -e "Host: 85/client-udp.ovpn " | lolcat
-echo -e "=============================" | lolcat
-echo -e "  Config OpenVPN SSL 569:" | lolcat
-echo -e "Host: 85/569client-ssl.ovpn" | lolcat
-echo -e "=============================" | lolcat
-echo -e "  Config ehi (HTTP Injector) " | lolcat
-echo -e "  Config ovpn " | lolcat
+echo -e "  Config .ehi (HTTP Injector) " | lolcat
+echo -e "  Config .ovpn (OpenVPN)" | lolcat
 echo -e "(OpenVPN HTTP Custom(Open Cfg VPN))" | lolcat
 echo -e "  Mod by Sulaiman L"  | lolcat
