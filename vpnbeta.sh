@@ -235,7 +235,12 @@ rm -rf /etc/squid/squid.con*
 # Creating Squid server config using cat eof tricks
 cat <<'mySquid' > /etc/squid/squid.conf
 # My Squid Proxy Server Config
-acl VPN dst $MYIP/32
+acl VPN dst xxxxxxxxx/32
+acl SSH dst xxxxxxxxx/255.255.255.255
+acl SSL_ports port 443
+acl SSL_ports port 569
+acl Safe_ports port 569
+acl Safe_ports port 1945
 http_access allow VPN
 http_access allow SSH
 http_access deny all 
@@ -312,7 +317,11 @@ refresh_pattern . 0 20% 4320
 visible_hostname SulaimanL
 mySquid
 
- 
+# setting
+MYIP=$(wget -qO- ipv4.icanhazip.com);
+MYIP2="s|xxxxxxxxx|$MYIP|g";
+sed -i "s|xxxxxxxxx|$MYIP|g" /etc/squid/squid.conf
+
 # Setting machine's IP Address inside of our Squid config(security that only allows this machine to use this proxy server)
 sed -i "s|IP-ADDRESS|$IPADDR|g" /etc/squid/squid.conf
 # Setting squid ports
