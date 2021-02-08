@@ -237,10 +237,37 @@ cat <<'mySquid' > /etc/squid/squid.conf
 # My Squid Proxy Server Config
 acl VPN dst xxxxxxxxx/32
 acl SSH dst xxxxxxxxx/255.255.255.255
+# Izinkan Port SSL
 acl SSL_ports port 443
+acl SSL_ports port 222
+acl SSL_ports port 43
+acl SSL_ports port 69
+acl SSL_ports port 600
+acl SSL_ports port 700
+acl SSL_ports port 800
+acl SSL_ports port 900
+acl SSL_ports port 444
+acl SSL_ports port 777
+acl SSL_ports port 540
+acl SSL_ports port 551
+acl SSL_ports port 9900
 acl SSL_ports port 569
+acl SSL_ports port 8181
+acl SSL_ports port 3129
+# Izinkan port ssh vpn
 acl Safe_ports port 569
 acl Safe_ports port 1945
+acl Safe_ports port 22
+acl Safe_ports port 143
+acl Safe_ports port 200
+acl Safe_ports port 400
+acl Safe_ports port 8000
+acl Safe_ports port 1078
+acl Safe_ports port 450
+acl Safe_ports port 77
+acl Safe_ports port 550
+acl Safe_ports port 9000
+acl Safe_ports port 80
 http_access allow VPN
 http_access allow SSH
 http_access deny all 
