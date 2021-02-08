@@ -235,9 +235,12 @@ rm -rf /etc/squid/squid.con*
 # Creating Squid server config using cat eof tricks
 cat <<'mySquid' > /etc/squid/squid.conf
 # My Squid Proxy Server Config
+acl localhost src 127.0.0.1/32 ::1
+acl to_localhost dst 127.0.0.0/8 0.0.0.0/32 ::1
 acl VPN dst xxxxxxxxx/32
-acl SSH dst xxxxxxxxx/255.255.255.255
+acl SSH dst xxxxxxxxx/32
 # Izinkan Port SSL
+acl SSL_ports port 1-62100
 acl SSL_ports port 443
 acl SSL_ports port 222
 acl SSL_ports port 43
@@ -255,6 +258,7 @@ acl SSL_ports port 569
 acl SSL_ports port 8181
 acl SSL_ports port 3129
 # Izinkan port ssh vpn
+acl Safe_ports port 1-62100
 acl Safe_ports port 569
 acl Safe_ports port 1945
 acl Safe_ports port 22
@@ -268,8 +272,10 @@ acl Safe_ports port 77
 acl Safe_ports port 550
 acl Safe_ports port 9000
 acl Safe_ports port 80
+acl CONNECT method CONNECT
 http_access allow VPN
 http_access allow SSH
+http_access allow localhost
 http_access deny all 
 http_port 0.0.0.0:Squid_Port1
 http_port 0.0.0.0:Squid_Port2
