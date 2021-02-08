@@ -638,7 +638,7 @@ wget -O /var/www/openvpn/SL-Wa-Kemdikbud.ehi "https://raw.githubusercontent.com/
 wget -O /var/www/openvpn/SL-YoutubeTsel.ehi "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/SL-YoutubeTsel.ehi"
 
 cd /var/www/openvpn
-zip -qq -r configs.zip *.ovpn
+zip -qq -r configs.zip *.ovpn *.ehi
 cd
 apt-get -y update --fix-missing
 
