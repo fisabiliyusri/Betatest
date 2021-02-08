@@ -629,14 +629,16 @@ systemctl restart nginx
  
  # Creating all .ovpn config archives
 # Kuota Maxstream Tsel
-wget -O /var/www/openvpn/SL-Maxstream.ehi "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/SL-Maxstream.ehi"
-
+cd /var/www/openvpn
+wget https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/SL-Maxstream.ehi
 # Kuota Whatsapp/Kemdikbud Tsel
-wget -O /var/www/openvpn/SL-Wa-Kemdikbud.ehi "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/SL-Wa-Kemdikbud.ehi"
-
+cd /var/www/openvpn
+wget https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/SL-Wa-Kemdikbud.ehi
 # Kuota Youtube Tsel
-wget -O /var/www/openvpn/SL-YoutubeTsel.ehi "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/SL-YoutubeTsel.ehi"
-
+cd /var/www/openvpn
+wget https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/SL-YoutubeTsel.ehi
+# zip
+cd
 cd /var/www/openvpn
 zip -qq -r configs.zip *.ovpn *.ehi
 cd
